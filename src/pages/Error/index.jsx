@@ -3,9 +3,9 @@ import React from "react"
 function Error() {
   return (
     <div>
-      Erreur 404,
+      404 Error,
       <br />
-      Désolé cette page n'existe pas !
+      Sorry this page does not exist!
     </div>
   )
 }

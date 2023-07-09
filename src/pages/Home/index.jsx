@@ -6,7 +6,7 @@ const MainStyled = styled.main`
   flex: 1;
 `
 
-function Home(props) {
+function Home() {
   return (
     <MainStyled>
       <Hero />

@@ -77,13 +77,16 @@ const ButtonAction = styled.button`
 `
 
 function Profile() {
-  const token = useSelector((state) => state.token)
+  const stateToken = useSelector((state) => state.token)
   const firstName = useSelector((state) => state.firstName)
   const lastName = useSelector((state) => state.lastName)
   const [buttonAction, setButtonAction] = useState("off")
   const [newFirstName, setNewFirstName] = useState(firstName)
   const [newLastName, setNewLastName] = useState(lastName)
   const dispatch = useDispatch()
+  const token = localStorage.getItem("token")
+    ? localStorage.getItem("token")
+    : stateToken
 
   const saveForm = (e) => {
     e.preventDefault()

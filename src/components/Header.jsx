@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Logo from "../assets/images/argentBankLogo.png"
 import styled from "styled-components"
 import { NavLink } from "react-router-dom"
@@ -45,16 +45,18 @@ function Header() {
   const firstName = useSelector((state) => state.firstName)
   const dispatch = useDispatch()
 
-  const logOut = () => {
+  const deleteToken = () => {
+    if (localStorage.getItem("token")) {
+      localStorage.removeItem("token")
+    }
     dispatch(getToken(null))
   }
 
-  const deleteToken = () => {
-    if (token) {
-      localStorage.removeItem("token")
-      dispatch(getToken(null))
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      dispatch(getToken(localStorage.getItem("token")))
     }
-  }
+  }, [dispatch])
 
   return (
     <NavStyled>
@@ -64,7 +66,7 @@ function Header() {
       </MainNavLogo>
       <div>
         {token ? (
-          <MainNavItem to="/" onClick={() => logOut()}>
+          <MainNavItem to="/">
             <i className="fa fa-user-circle"></i>&nbsp;{firstName}&nbsp;
             <i className="fa fa-sign-out"></i>
             <span onClick={() => deleteToken()}>Sign Out</span>

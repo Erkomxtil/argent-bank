@@ -18,6 +18,16 @@ const HeroContent = styled.section`
   margin: 2rem;
   padding: 2rem;
   background: white;
+
+  @media (max-width: 500px) {
+    position: absolute;
+    top: 40px;
+    right: 40%;
+    width: calc(100% - 50%);
+    padding: 2rem;
+    background: white;
+    transform: translateX(50%);
+  }
 `
 const Subtitle = styled.p`
   font-weight: bold;
